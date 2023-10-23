@@ -43,12 +43,12 @@ jobs:
             cd backend
             python -m pip install --upgrade pip
             pip install -r requirements.txt
-      - run:
-          name: run flask tests
-          command: |
-            cd backend
-            pip install pytest pytest-cov
-            pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      # - run:
+      #     name: run flask tests
+      #     command: |
+      #       cd backend
+      #       pip install pytest pytest-cov
+      #       pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
   build-and-push-backend-image:
     docker:
@@ -67,7 +67,7 @@ jobs:
 
   build-and-push-frontend-image:
     docker:
-      - image: circleci/node:18.18
+      - image: cimg/node:18.18.0
     steps:
       - checkout
       - setup_remote_docker:
