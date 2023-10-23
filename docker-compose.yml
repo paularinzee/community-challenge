@@ -1,18 +1,28 @@
+version: '3.8'
 services:
-  flask-server:
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     env_file:
-      - .env
+      - ./backend/.env
     ports:
-      - 5000:5000
+      - "5000:5000"
 
-  vue-client:
+  # nginx:
+  #   build: ./nginx
+  #   container_name:  nginx
+  #   restart: always
+  #       # port allows the host machine to link to container
+  #       # pass 80 from host machine to 80 of the image filesystem
+  #   ports:
+  #       - 5000:5000
+
+  vue-frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     env_file:
       - .env
     ports:
-    - 80:80
+      - "80:80"
