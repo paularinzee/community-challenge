@@ -124,7 +124,7 @@ workflows:
       - test-backend
       - build-and-push-backend-image:
           requires: [test-backend]
-      - build-and-push-frontend-image:
+      - build-and-push-frontend-image
       
     
     
